@@ -9,7 +9,7 @@ module.exports = {
         primary: "#145CC4",
         textPrimary: "#222222",
         border: "#DADCE0",
-        bgWhite : "#F7F7FC"
+        bgWhite : "#EFF2F6"
       },
       boxShadow: {
         custom: '6px 6px 54px rgba(0, 0, 0, 0.05)',

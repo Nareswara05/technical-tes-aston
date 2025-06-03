@@ -9,14 +9,13 @@ export default async function DashboardUserPage({ searchParams }) {
   const search = searchParams?.search || '';
   const limit = 6;
   const skip = (page - 1) * limit;
-
+  // Memanggil API untuk mendapatkan data pengguna
   const { users, total } = await usersAPI({ limit, skip, search });
   const totalPages = Math.ceil(total / limit);
 
 
   return (
     <div className="w-full">
-      {/* Header Actions */}
       <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-4 gap-3">
         <div className="flex flex-col sm:flex-row gap-2 w-full md:w-auto">
           <form method="GET" action="/dashboard/user" className="w-full sm:w-auto">
@@ -25,7 +24,7 @@ export default async function DashboardUserPage({ searchParams }) {
               name="search"
               defaultValue={search}
               placeholder="Cari nama atau email"
-              className="border border-gray-300 px-3 py-2 rounded-xl w-full sm:w-80 text-sm text-primary"
+              className="border  px-3 py-2 rounded-xl w-full sm:w-80 text-sm text-primary"
             />
           </form>
         </div>

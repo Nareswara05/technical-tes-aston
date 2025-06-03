@@ -4,9 +4,11 @@ import { FiArrowLeft, FiMail, FiMapPin, FiBriefcase, FiUser } from 'react-icons/
 import Image from 'next/image';
 
 export default async function UserDetailPage({ params }) {
+    //mengambil id berdasarkan params dari URL
     const { id } = params;
     const user = await userDetailAPI({ id });
 
+    // Jika user tidak ditemukan, tampilkan pesan
     if (!user) {
         return (
             <div className="p-6 text-center">
@@ -45,19 +47,19 @@ export default async function UserDetailPage({ params }) {
                 </div>
             </div>
 
-            {/* Basic Info */}
+            {/* Info */}
             <div className="space-y-3 text-sm text-gray-700">
                 <Detail label="Email" icon={<FiMail />} value={user.email} />
                 <Detail label="Username" icon={<FiUser />} value={user.username} />
             </div>
 
-            {/* Location */}
+            {/* Lokasi */}
             <div className="border-t mt-6 pt-4 text-sm text-gray-700">
                 <h2 className="font-semibold text-gray-800 flex items-center gap-1 mb-1"><FiMapPin /> Alamat</h2>
                 <p>{user.address.address}, {user.address.city}, {user.address.state}, {user.address.country} {user.address.postalCode}</p>
             </div>
 
-            {/* Company */}
+            {/* Perusahaan */}
             <div className="border-t mt-6 pt-4 text-sm text-gray-700">
                 <h2 className="font-semibold text-gray-800 flex items-center gap-1 mb-1"><FiBriefcase /> Pekerjaan</h2>
                 <p>{user.company.title} @ {user.company.name}</p>
@@ -70,6 +72,7 @@ export default async function UserDetailPage({ params }) {
     );
 }
 
+// reusable detail component
 function Detail({ label, value, icon }) {
     return (
         <div className="flex items-start gap-2">
