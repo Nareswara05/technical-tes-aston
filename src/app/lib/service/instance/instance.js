@@ -15,7 +15,7 @@ const instance = axios.create({
 instance.interceptors.response.use(
     (response) => response,
     async (error) => {
-        if (error.response && error.response.status === 401) {
+        if (error.response && error.response.status === 401 || 500) {
             
             setTimeout(() => {
                 // menghapus token dari cookies dan localStorage
