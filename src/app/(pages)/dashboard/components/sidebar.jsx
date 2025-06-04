@@ -22,7 +22,6 @@ export default function MainSidebar() {
     const handleLogout = () => {
         // Hapus cookie
         document.cookie = "token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
-        document.cookie = "role_id=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
         // Redirect ke halaman login
         window.location.href = '/auth/login';
     };

@@ -62,7 +62,7 @@ export const useLoginStore = create((set) => ({
                     icon: 'success',
                     title: 'Login berhasil',
                 });
-                // Simpan token ke localStorage dan redirect ke dashboard
+                // Simpan token ke localStorage dan Cookies lalu redirect ke dashboard
                 document.cookie = `token=${result.accessToken}; path=/; max-age=${7 * 24 * 60 * 60}; secure; samesite=strict`;
                 localStorage.setItem('token', result.accessToken);
                 setTimeout(() => {
