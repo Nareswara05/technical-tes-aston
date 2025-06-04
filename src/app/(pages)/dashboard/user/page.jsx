@@ -1,6 +1,7 @@
 import { usersAPI } from '@/app/lib/service/endpoint/user/userAPI';
 import Link from 'next/link';
 import { FiEye } from 'react-icons/fi';
+import { ViewButton } from '../components/utils/action-button';
 
 export default async function DashboardUserPage({ searchParams }) {
 
@@ -56,13 +57,10 @@ export default async function DashboardUserPage({ searchParams }) {
                     <td className="px-4 py-3 whitespace-nowrap text-textPrimary">{user.email}</td>
                     <td className="px-4 py-3 whitespace-nowrap text-textPrimary capitalize">{user.gender || 'N/A'}</td>
                     <td className="px-4 py-3 whitespace-nowrap text-textPrimary">{user.birthDate}</td>
-                    <td className="px-4 py-3 text-center space-x-3 text-sm">
-                      <Link
+                    <td className="px-4 py-3 text-center w-fit space-x-3 text-sm">
+                      <ViewButton
                         href={`/dashboard/user/${user.id}`}
-                        className="flex items-center gap-1 p-2 w-fit font-medium text-blue-600 border border-blue-600 rounded-lg hover:bg-blue-100 transition"
-                      >
-                        <FiEye className="text-blue-600" />
-                      </Link>
+                      />
                     </td>
                   </tr>
                 ))
@@ -90,9 +88,8 @@ export default async function DashboardUserPage({ searchParams }) {
             <Link
               key={p}
               href={`/dashboard/user?page=${p}&search=${search}`}
-              className={`px-4 py-2 border rounded-xl text-sm transition ${
-                p === page ? 'bg-primary text-white' : 'bg-white text-primary border-gray-300'
-              }`}
+              className={`px-4 py-2 border rounded-xl text-sm transition ${p === page ? 'bg-primary text-white' : 'bg-white text-primary border-gray-300'
+                }`}
             >
               {p}
             </Link>

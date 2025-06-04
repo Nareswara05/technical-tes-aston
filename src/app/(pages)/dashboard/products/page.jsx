@@ -37,6 +37,7 @@ export default async function ProductsPage({ searchParams }) {
                     </div>
                 ) : products.map((product) => (
                     <CardProduct
+                        id={product.id}
                         key={product.id}
                         title={product.title}
                         img={product.thumbnail}

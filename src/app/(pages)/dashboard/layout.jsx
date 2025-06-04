@@ -18,9 +18,9 @@ export default function LayoutDashboard({ children }) {
   return (
     <div className='flex flex-col md:flex-row w-screen overflow-y-hidden bg-bgWhite h-screen md:p-4 items-start gap-8 '>
       <MainSidebar />
-      <div className="flex h-screen overflow-y-auto w-full flex-col pt-16 md:pt-0 px-4 md:px-0 gap-4 ">
+      <div className="flex h-screen overflow-y-auto w-full flex-col py-16 md:pt-0 px-4 md:px-0 gap-4 ">
         <WelcomeGreetings />
-        <div className="">
+        <div>
           {children}
         </div>
       </div>
