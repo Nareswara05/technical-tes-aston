@@ -81,6 +81,7 @@ export default async function ProductDetailPage({ params}) {
                             <div className='flex flex-col gap-3 sm:flex-row items-center w-full md:gap-6'>
                                 <EditButton
                                 messsage={'Edit Produk'}
+                                href={`/dashboard/products/edit/${id}`}
                                 />
                                 <DeleteButton
                                 title={'Produk'}

@@ -65,9 +65,9 @@ export default function ListProduct({
                         ))}
                     </select>
                 </div>
-                <button className="bg-primary min-w-max w-full md:w-fit hover:bg-blue-700 py-3 px-4 rounded-xl text-white font-medium">
+                <Link href={'/dashboard/products/add'} className="bg-primary min-w-max w-full md:w-fit hover:bg-blue-700 py-3 px-4 rounded-xl text-white font-medium">
                     + Tambah Produk
-                </button>
+                </Link>
             </div>
 
             <div className="grid gap-4 grid-cols-2 md:grid-cols-3 xl:grid-cols-5">
@@ -81,6 +81,7 @@ export default function ListProduct({
                     ))
                 )}
             </div>
+
             {/* pagination */}
             <div className="pt-6 pb-12 flex gap-2 justify-center flex-wrap">
                 {page > 1 && (

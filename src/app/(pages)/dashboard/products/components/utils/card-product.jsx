@@ -32,7 +32,9 @@ export default function CardProduct({ thumbnail, title, price, rating, stock, id
                         <ViewButton
                             href={`/dashboard/products/${id}`}
                         />
-                        <EditButton />
+                        <EditButton 
+                        href={`/dashboard/products/edit/${id}`}
+                        />
                         <DeleteButton
                             title={'produk'}
                         />
