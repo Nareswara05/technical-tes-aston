@@ -4,14 +4,14 @@ import { FiEdit2, FiEye } from 'react-icons/fi';
 import { GoStarFill } from "react-icons/go";
 import { FaRegTrashAlt } from "react-icons/fa";
 import Link from 'next/link';
-import { DeleteButton, EditButton, ViewButton } from '../../components/utils/action-button';
+import { DeleteButton, EditButton, ViewButton } from '../../../components/utils/action-button';
 
 
-export default function CardProduct({ img, title, price, rating, stock, id }) {
+export default function CardProduct({ thumbnail, title, price, rating, stock, id }) {
     return (
         <div className='w-full rounded-xl bg-white p-3 md:p-4 flex flex-col gap-4'>
             <Image
-                src={img}
+                src={thumbnail}
                 alt={title}
                 className='w-full h-32 object-contain rounded-md'
                 width={1000}

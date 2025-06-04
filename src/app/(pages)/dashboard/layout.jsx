@@ -1,13 +1,15 @@
+//file layout ini berfungsi sebagai layout utama untuk halaman dashboard, yang akan mengatur sidebar dan komponen lainnya, dan memanggil children sebagai konten utama halaman dashboard
 "use client"
 import React, { useEffect } from 'react'
 import MainSidebar from './components/sidebar'
 import WelcomeGreetings from './components/welcome-greetings'
 import CurrentUserAPI from '@/app/lib/service/endpoint/auth/currentUserAPI';
+
 import { useCurrentUserStore } from '@/app/stores/currentUserStore';
 
 export default function LayoutDashboard({ children }) {
   const setUser = useCurrentUserStore((state) => state.setUser);
-  // memanggil CurrentUserAPI untuk mendapatkan data pengguna saat ini dan menyimpannya di store
+  // memanggil API untuk mendapatkan data pengguna saat ini dan menyimpannya di store
   useEffect(() => {
     const fetchUser = async () => {
       const user = await CurrentUserAPI();
