@@ -1,4 +1,5 @@
-"use client"
+"use client";
+
 import Link from 'next/link';
 import React from 'react';
 import { GoPerson } from "react-icons/go";
@@ -7,11 +8,10 @@ import { usePathname } from 'next/navigation';
 import { CiLogout } from "react-icons/ci";
 import { FiMenu } from "react-icons/fi";
 import { useSidebarStore } from '@/app/stores/sidebarStore';
+import Swal from 'sweetalert2';
 
 export default function MainSidebar() {
-    // Menggunakan usePathname untuk mendapatkan path saat ini
     const pathname = usePathname();
-    // Menggunakan custom store untuk mengelola state sidebar
     const { isOpen, toggleSidebar, closeSidebar } = useSidebarStore();
 
     const menuItems = [
@@ -19,22 +19,47 @@ export default function MainSidebar() {
         { id: 2, label: "Data Produk", href: "/dashboard/products", icon: <IoCartOutline size={20} /> },
     ];
 
+    const handleLogout = () => {
+        // Hapus cookie
+        document.cookie = "token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+        document.cookie = "role_id=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+        // Redirect ke halaman login
+        window.location.href = '/auth/login';
+    };
+
+    const confirmLogout = async () => {
+        const result = await Swal.fire({
+            title: `Apa Anda yakin ingin keluar?`,
+            text: `Anda harus masuk kembali untuk mengakses halaman ini. Pastikan Anda telah menyimpan semua perubahan sebelum keluar.`,
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#d33',
+            cancelButtonColor: '#3085d6',
+            confirmButtonText: 'Ya, Keluar!',
+            cancelButtonText: 'Batal',
+        });
+
+        if (result.isConfirmed) {
+            handleLogout();
+        }
+
+    }
+
     return (
-        <>  
-            {/* navbar ini akan aktif jika layar berukuran dibawah 768px */}
+        <>
             <div className={`md:hidden fixed z-50 top-0 left-0 w-full bg-white flex items-center justify-start p-4 border-b-2 ${isOpen ? 'hidden' : 'block'}`}>
-                <button onClick={toggleSidebar} >
+                <button onClick={toggleSidebar}>
                     <FiMenu size={28} className="text-textPrimary" />
                 </button>
             </div>
-            {/* overlay hitam untuk menutup halaman saat sidebar terbuka */}
+
             {isOpen && (
                 <div
                     onClick={closeSidebar}
                     className="fixed inset-0 bg-black bg-opacity-50 z-40 md:hidden"
                 />
             )}
-            {/* sidebar utama */}
+
             <div className={`
                 fixed z-50 top-0 left-0 h-full w-[50%] max-w-xs bg-primary px-4 py-8 md:rounded-2xl flex flex-col justify-between 
                 transform transition-transform duration-300 ease-in-out
@@ -58,7 +83,7 @@ export default function MainSidebar() {
                     <hr className='w-full' />
                 </div>
 
-                <button onClick={closeSidebar}>
+                <button onClick={confirmLogout}>
                     <li className="gap-3 flex items-center rounded-full border hover:bg-white hover:bg-opacity-5 border-white p-4 cursor-pointer text-white">
                         <CiLogout size={20} />
                         <span className='text-base font-normal truncate'>Keluar</span>
