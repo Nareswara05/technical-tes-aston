@@ -26,13 +26,13 @@ export default function EditProduct({ product, id }) {
 
     const handleSubmit = async (e) => {
         const result = await Swal.fire({
-            title: `Apa Anda yakin ingin mengedit data ini??`,
+            title: `Apa Anda yakin ingin mengubah data ini??`,
             text: `Pastikan data yang Anda masukkan sudah benar sebelum menyimpan perubahan. Jika ada kesalahan, Anda dapat mengeditnya kembali. Setelah disimpan, perubahan tidak dapat dibatalkan.`,
             icon: 'warning',
             showCancelButton: true,
-            confirmButtonColor: '#d33',
-            cancelButtonColor: '#3085d6',
-            confirmButtonText: 'Ya, hapus!',
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Ya, ubah!',
             cancelButtonText: 'Batal',
         });
 
