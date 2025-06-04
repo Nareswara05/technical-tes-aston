@@ -4,17 +4,17 @@ export function middleware(request) {
   const { pathname } = request.nextUrl;
   const token = request.cookies.get('token')?.value;
 
-  // Redirect to /home if accessing root
+    // route akan mengarah otomatis ke halaman login jika user pertama kali mengakses aplikasi
   if (pathname === '/') {
     return NextResponse.redirect(new URL('/auth/login', request.url));
   }
 
-  // If accessing /dashboard but no token, redirect to login
+  // jika mengakses dashboard tetapi user belum login, maka akan ter redirect ke halaman login
   if (pathname.startsWith('/dashboard') && !token) {
     return NextResponse.redirect(new URL('/auth/login', request.url));
   }
 
-  // If accessing /auth/login but already have token, redirect to dashboard
+  // jika user sudah login dan mengakses halaman login, maka akan ter redirect ke halaman dashboard
   if (pathname.startsWith('/auth/login') && token) {
     return NextResponse.redirect(new URL('/dashboard', request.url));
   }
